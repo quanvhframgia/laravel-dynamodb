@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace QuanKim\DynamoDb;
 
 /**
  * Class ModelObserver.
@@ -18,7 +18,7 @@ class ModelObserver
     protected $marshaler;
 
     /**
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \QuanKim\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 

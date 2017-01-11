@@ -1,5 +1,6 @@
 laravel-dynamodb
 ================
+### Fork from [https://github.com/baopham/laravel-dynamodb]()
 
 [![Latest Stable Version](https://poser.pugx.org/baopham/dynamodb/v/stable)](https://packagist.org/packages/baopham/dynamodb)
 [![Total Downloads](https://poser.pugx.org/baopham/dynamodb/downloads)](https://packagist.org/packages/baopham/dynamodb)
@@ -44,18 +45,18 @@ Install
     ];
     ```
 
-* Put DynamoDb config in `config/services.php`:
+* Put DynamoDb config in `config/aws.php`:
 
     ```php
-    // config/services.php
+    // config/aws.php
     ...
-    'dynamodb' => [
-        'key' => env('DYNAMODB_KEY'),
-        'secret' => env('DYNAMODB_SECRET'),
-        'region' => env('DYNAMODB_REGION'),
-        'local_endpoint' => env('DYNAMODB_LOCAL_ENDPOINT'), // see http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html
-        'local' => env('DYNAMODB_LOCAL'), // true or false? should use dynamodb_local or not?
+    'credentials' => [
+        'key'    => env('AWS_ACCESS_KEY_ID', ''),
+        'secret' => env('AWS_SECRET_ACCESS_KEY', ''),
     ],
+    'region' => env('AWS_REGION', 'us-east-1'),
+    'version' => 'latest',
+    'endpoint' => env('AWS_ENDPOINT', ''),
     ...
     ```
 

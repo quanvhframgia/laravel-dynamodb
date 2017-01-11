@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace QuanKim\DynamoDb;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +19,7 @@ abstract class DynamoDbModel extends Model
     public $incrementing = false;
 
     /**
-     * @var \BaoPham\DynamoDb\DynamoDbClientInterface
+     * @var \QuanKim\DynamoDb\DynamoDbClientInterface
      */
     protected static $dynamoDb;
 
@@ -34,7 +34,7 @@ abstract class DynamoDbModel extends Model
     protected $marshaler;
 
     /**
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \QuanKim\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 
@@ -76,7 +76,7 @@ abstract class DynamoDbModel extends Model
     protected function setupDynamoDb()
     {
         if (is_null(static::$dynamoDb)) {
-            static::$dynamoDb = app(\BaoPham\DynamoDb\DynamoDbClientInterface::class);
+            static::$dynamoDb = app(\QuanKim\DynamoDb\DynamoDbClientInterface::class);
         }
 
         $this->client = static::$dynamoDb->getClient();

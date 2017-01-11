@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace QuanKim\DynamoDb;
 
 /**
  * Class DynamoDbOperator.

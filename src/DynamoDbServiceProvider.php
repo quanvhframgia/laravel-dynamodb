@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace QuanKim\DynamoDb;
 
 use Aws\DynamoDb\Marshaler;
 use Illuminate\Support\Facades\App;
@@ -26,14 +26,11 @@ class DynamoDbServiceProvider extends ServiceProvider
 
     protected function bindForApp($marshalerOptions = [])
     {
-        $this->app->singleton('BaoPham\DynamoDb\DynamoDbClientInterface', function ($app) use ($marshalerOptions) {
+        $this->app->singleton('QuanKim\DynamoDb\DynamoDbClientInterface', function ($app) use ($marshalerOptions) {
             $config = [
-                'credentials' => [
-                    'key' => config('services.dynamodb.key'),
-                    'secret' => config('services.dynamodb.secret'),
-                ],
-                'region' => config('services.dynamodb.region'),
-                'version' => '2012-08-10',
+                'credentials' => config('aws.credentials'),
+                'region' => config('aws.region'),
+                'version' => config('aws.version'),
             ];
             $client = new DynamoDbClientService($config, new Marshaler($marshalerOptions), new EmptyAttributeFilter());
 
@@ -43,17 +40,12 @@ class DynamoDbServiceProvider extends ServiceProvider
 
     protected function bindForTesting($marshalerOptions = [])
     {
-        $this->app->singleton('BaoPham\DynamoDb\DynamoDbClientInterface', function ($app) use ($marshalerOptions) {
-            $region = App::environment() == 'testing' ? 'test' : 'stub';
-
+        $this->app->singleton('QuanKim\DynamoDb\DynamoDbClientInterface', function ($app) use ($marshalerOptions) {
             $config = [
-                'credentials' => [
-                    'key' => 'dynamodb_local',
-                    'secret' => 'secret',
-                ],
-                'region' => $region,
-                'version' => '2012-08-10',
-                'endpoint' => config('services.dynamodb.local_endpoint'),
+                'credentials' => config('aws.credentials'),
+                'region' => config('aws.region'),
+                'version' => config('aws.version'),
+                'endpoint' => config('aws.endpoint'),
             ];
             $client = new DynamoDbClientService($config, new Marshaler($marshalerOptions), new EmptyAttributeFilter());
 

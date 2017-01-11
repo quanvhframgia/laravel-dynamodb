@@ -1,6 +1,6 @@
 <?php
 
-namespace BaoPham\DynamoDb;
+namespace QuanKim\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
@@ -18,7 +18,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
     protected $marshaler;
 
     /**
-     * @var \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @var \QuanKim\DynamoDb\EmptyAttributeFilter
      */
     protected $attributeFilter;
 
@@ -46,7 +46,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
     }
 
     /**
-     * @return \BaoPham\DynamoDb\EmptyAttributeFilter
+     * @return \QuanKim\DynamoDb\EmptyAttributeFilter
      */
     public function getAttributeFilter()
     {
